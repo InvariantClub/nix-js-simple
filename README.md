@@ -19,6 +19,14 @@ npm run dev
 npm run build
 ```
 
+Or, via Nix
+
+``` sh
+nix build .#
+```
+
+Then, in the directory `./result/` you will find the artifacts.
+
 #### Formatting
 
 ``` sh
@@ -28,3 +36,7 @@ nix fmt
 ## How to use/extend this
 
 Almost everything will be managed by `npm`.
+
+If you add new npm dependencies, you will need to update the hash accordingly;
+just run `nix build .#` and it will print out the new hash you need to set in
+`./nix/outputs.nix` for the field `npmDepsHash`.
