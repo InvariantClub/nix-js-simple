@@ -13,7 +13,10 @@ with inputs; {
         name = "vue-js-simple";
         src = lib.cleanSource ../.;
         version = "0.0.0";
-        npmDepsHash = "sha256-XxE8UVGumqhv4xf0g+8T93ROsDOxhTDX23cNxaTXo1w=";
+
+        npmDeps = pkgs.importNpmLock { npmRoot = lib.cleanSource ../.; };
+
+        npmConfigHook = pkgs.importNpmLock.npmConfigHook;
 
         buildPhase = ''
           npm run build
